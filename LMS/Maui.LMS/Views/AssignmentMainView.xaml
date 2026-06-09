@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.LMS.Views.AssignmentMainView"
+             Title="{Binding Name}"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <VerticalStackLayout
+        Spacing="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding AvailablePoints, StringFormat='Available Points: {0}'}" HorizontalOptions="Center" Grid.Column="0"/>
+                <Label x:Name="StudentPoints" Text="" Grid.Column="1"/>
+                <Label Text="{Binding DueDate, StringFormat='Due: {0}'}" HorizontalOptions="Center" Grid.Column="2"/>
+            </Grid>
+            
+            <Label Grid.Row="1"
+            Text="{Binding Description}"
+            VerticalOptions="Center"/>
+        </Grid>
+        <Label x:Name="CommentLabel" Text="Teacher Feedback: "/>
+        <Label Text="&#10;"/>
+
+        <Button x:Name="ViewSubmissions" Text="View Submissions" Clicked="ViewSubmissionsClicked"/>
+        <Button x:Name="NewSubmission" Text="Make a Submission" Clicked="NewSubmissionClicked"/>
+        <Label Text="&#10;"/>
+        <Button Text="Go Back" Clicked="GoBackClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

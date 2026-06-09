@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.LMS.Views.StudentManagmentView"
+             Title="StudentManagmentView"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <VerticalStackLayout
+        Spacing="10">
+        <Label
+            Text="Student Management"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <CollectionView
+            ItemsSource="{Binding Students}"
+            SelectedItem="{Binding SelectedItem}" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}" Grid.Column="0"/>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Column="1"/>
+                            </Grid>
+                            <Label Text="{Binding ClassificationString}" Grid.Row="1"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <!-- unused -->
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Add new student" Clicked="AddNewClicked"/>
+        <Button Text="Edit" Clicked="EditClicked"/>
+        <Grid x:Name="CopyLogic">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Export Roster" Clicked="ExportClicked" Grid.Column="0"/>
+            <Label x:Name="CopyLabel" Text="Holding Roster Export" Grid.Column="1" HorizontalOptions="Center"/>
+            <Button Text="Import Roster" Clicked="ImportClicked" Grid.Column="2"/>
+        </Grid>
+        <Button Text="Delete" Clicked="DeleteClicked"/>
+        
+        <Label Text="&#10;"/>
+        <Button Text="Go Back" Clicked="GoBackClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

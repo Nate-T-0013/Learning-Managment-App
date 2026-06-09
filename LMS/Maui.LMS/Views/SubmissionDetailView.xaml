@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.LMS.Views.SubmissionDetailView"
+             Title="SubmissionDetailView"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <VerticalStackLayout
+        Spacing="10">
+        <Label x:Name="TeacherContent" Text="{Binding Content, StringFormat='Content: {0}'}"/>
+        <Label x:Name="TeacherAvailablePoints" Text="Available Points: "/>
+        <Label x:Name="TeacherPointsLabel" Text="Points Graded: "/>
+        <Entry x:Name="TeacherPointsEntry" Text="{Binding Points}"/>
+        <Label x:Name="PercentLabel" Text="Grade as Percentge: "/>
+        <CheckBox x:Name="PercentBox" IsChecked="False"/>
+        <Label x:Name="TeacherCommentLabel" Text="Submission Comment: "/>
+        <Entry x:Name="TeacherCommentEntry" Text="{Binding Comment}"/>
+
+        <Label x:Name="StudentContentLabel" Text="Content: "/>
+        <Entry x:Name="StudentContentEntry" Text="{Binding Content}"/>
+        <Button Text="Ok" Clicked="OkClicked"/>
+        <Label Text="&#10;"/>
+        <Button Text="Go Back" Clicked="GoBackClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.LMS.Views.TeacherMainView"
+             Title="TeacherMainView"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <VerticalStackLayout
+        Spacing="10">
+        <Label
+            Text="Teacher Menu"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Filter By " Grid.Column="0" Grid.Row="0"/>
+            <Button Text="Filter" Clicked="FilterClicked" Grid.Column="0" Grid.Row="1"/>
+            <Label Text="Season" Grid.Column="1" Grid.Row="0"/>
+            <Entry x:Name="SeasonEntry" Text="" Grid.Column="1" Grid.Row="1"/>
+            <Label Text="Year" Grid.Column="2" Grid.Row="0"/>
+            <Entry x:Name="YearEntry" Text="" Grid.Column="2" Grid.Row="1"/>
+        </Grid>
+        
+        <CollectionView
+            ItemsSource="{Binding GroupedCourses}" IsGrouped="True"
+            SelectedItem="{Binding SelectedItem}" SelectionMode="Single">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Heading}"
+                    FontAttributes="Bold"/>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}" Grid.Column="0"/>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Column="1"/>
+                                <Label Text="{Binding SemesterSeason}" Grid.Column="2" HorizontalOptions="End"/>
+                                <Label Text="{Binding SemesterYear}" Grid.Column="3" HorizontalOptions="Start"/>
+                            </Grid>
+                            <Label Text="{Binding Description}" Grid.Row="1"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Select course" Clicked="SelectClicked"/>
+        <Button Text="Add new course" Clicked="AddNewClicked"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Edit" Clicked="EditClicked" Grid.Column="0"/>
+            <Button Text="Copy" Clicked="CopyClicked" Grid.Column="1"/>
+        </Grid>
+        <Button Text="Delete" Clicked="DeleteClicked"/>
+        
+        <Button Text="Manage Institution Students" Clicked="ManageStudentsClicked"/>
+        
+        <Label Text="&#10;"/>
+        <Button Text="Go Back" Clicked="GoBackClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

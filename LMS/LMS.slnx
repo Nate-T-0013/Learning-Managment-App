@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CLI.LMS/CLI.LMS.csproj" />
+  <Project Path="Library.LMS/Library.LMS.csproj" Id="7da243d2-fdfd-491c-b26a-b7dd4c52f7bc" />
+  <Project Path="Maui.LMS/Maui.LMS.csproj" Id="21668502-8bae-4cbe-9bd4-85fccb184d7e">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Maui.LMS.ViewModels"
+             x:Class="Maui.LMS.Views.CourseModulesView"
+             Title="{Binding Currentcourse.Name}"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <VerticalStackLayout
+        Spacing="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="{Binding Currentcourse.Description}"/>
+            <Label Grid.Column="1" x:Name="StudentGrade" Text="{Binding Grade.LetterGrade, StringFormat='Grade: {0}'}" HorizontalOptions="Center"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <VerticalStackLayout Grid.Column="0" Spacing="10">
+                <Button Text="Home Page" Clicked="HomePageclicked"/>
+                <Button Text="Modules" IsEnabled="False"/>
+                <Button Text="Assignments" Clicked="AssignmentsClicked"/>
+                <Button Text="Grades" Clicked="GradesClicked"/>
+                <Button x:Name="StudentListButton" Text="Student list" Clicked="StudentListClicked"/>
+                <Label Text="&#10;"/>
+                <Button Text="Go Back" Clicked="GoBackClicked"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="1" Spacing="10">
+                <Button x:Name="AddModuleButton" Text="Add Module" Clicked="AddModuleClicked"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="DeleteModuleButton" Text="Delete Module" Clicked="DeleteModuleClicked" Grid.Column="0"/>
+                    <Entry x:Name="DeleteModuleEntry" Keyboard="Numeric" Grid.Column="1"/>
+                </Grid>
+                <Button x:Name="AddPageButton" Text="Add Page" Clicked="AddPageClicked"/>
+                <Button x:Name="AddFileButton" Text="Add File" Clicked="AddFileClicked"/>
+                <Button x:Name="AddAssignmentButton" Text="Add Assignment" Clicked="AddAssignmentClicked"/>
+                <Button Text="View Item" Clicked="ItemClicked"/>
+                <Button x:Name="EditItemButton" Text="Edit Item" Clicked="EditItemClicked"/>
+                <Button x:Name="DeleteItemButton" Text="Delete Item" Clicked="DeleteItemClicked"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="2" Spacing="10">
+                <Label 
+                Text="Modules: "
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                <CollectionView
+                ItemsSource="{Binding Modules}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Id}" Grid.Row="0" HorizontalOptions="Center"/>
+
+                                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Items}"
+                                SelectedItem="{Binding BindingContext.SelectedItem, Source={RelativeSource AncestorType={x:Type viewModels:CourseModulesViewViewModel}}}"
+                                SelectionMode="Single">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text="{Binding TypeName}" Grid.Row="0"/>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding Id}" Grid.Column="0" HorizontalOptions="Center"/>
+                                                    <Label Text="{Binding Name}" Grid.Column="1"/>
+                                                </Grid>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Label Text="&#10;"/>
+        <Button Text="Go Back" Clicked="GoBackClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

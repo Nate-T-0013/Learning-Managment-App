@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Maui.LMS.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Maui.LMS"
+    xmlns:views="clr-namespace:Maui.LMS.Views"
+    Title="Maui.LMS">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Teacher"
+        ContentTemplate="{DataTemplate views:TeacherMainView}"
+        Route="TeacherMenu" />
+    <ShellContent
+        Title="Course List"
+        ContentTemplate="{DataTemplate views:StudentCourseListView}"
+        Route="StudentCourseList" />
+    <ShellContent
+        Title="Course Details"
+        ContentTemplate="{DataTemplate views:CourseDetailView}"
+        Route="CourseDetails" />
+    <ShellContent
+        Title="Course Main Menu"
+        ContentTemplate="{DataTemplate views:CourseMainMenuView}"
+        Route="CourseMainMenu" />
+    <ShellContent
+        Title="Course Modules"
+        ContentTemplate="{DataTemplate views:CourseModulesView}"
+        Route="CourseModules" />
+    <ShellContent
+        Title="Item Content"
+        ContentTemplate="{DataTemplate views:ItemMainView}"
+        Route="ItemMain" />
+    <ShellContent
+        Title="Item Details"
+        ContentTemplate="{DataTemplate views:ItemDetailView}"
+        Route="ItemDetail" />
+    <ShellContent
+        Title="Assignment Content"
+        ContentTemplate="{DataTemplate views:AssignmentMainView}"
+        Route="AssignmentMain" />
+    <ShellContent
+        Title="Assignment Details"
+        ContentTemplate="{DataTemplate views:AssignmentDetailView}"
+        Route="AssignmentDetail" />
+    <ShellContent
+        Title="Course Assignments"
+        ContentTemplate="{DataTemplate views:CourseAssignmentsView}"
+        Route="CourseAssignments" />
+    <ShellContent
+        Title="Submission List"
+        ContentTemplate="{DataTemplate views:SubmissionListView}"
+        Route="SubmissionList" />
+    <ShellContent
+        Title="Submission Details"
+        ContentTemplate="{DataTemplate views:SubmissionDetailView}"
+        Route="SubmissionDetail" />
+    <ShellContent
+        Title="Course Grades"
+        ContentTemplate="{DataTemplate views:CourseGradesView}"
+        Route="CourseGrades" />
+    <ShellContent
+        Title="Assignment Group Details"
+        ContentTemplate="{DataTemplate views:AssignmentGroupDetailView}"
+        Route="AssignmentGroupDetail" />
+    <ShellContent
+        Title="Student"
+        ContentTemplate="{DataTemplate views:StudentMainView}"
+        Route="StudentMenu" />
+    <ShellContent
+        Title="Student Management"
+        ContentTemplate="{DataTemplate views:StudentManagmentView}"
+        Route="StudentManagment" />
+    <ShellContent
+        Title="Student Details"
+        ContentTemplate="{DataTemplate views:StudentDetailView}"
+        Route="StudentDetails" />
+</Shell>
